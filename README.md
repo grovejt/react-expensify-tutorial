@@ -1,4 +1,4 @@
-Reference working app: https://budget-app.mead.io/ <br/> Course: https://cognizant.udemy.com/course/react-2nd-edition
+Reference working app: https://budget-app.mead.io/ <br/> Course: https://cognizant.udemy.com/course/react-2nd-edition <br/> React Router: https://reacttraining.com/react-router/
 
 ---
 
