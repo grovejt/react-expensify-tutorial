@@ -1,4 +1,4 @@
-Reference working app: http://indecision.mead.io/ <br/> Course: https://cognizant.udemy.com/course/react-2nd-edition
+Reference working app: https://budget-app.mead.io/ <br/> Course: https://cognizant.udemy.com/course/react-2nd-edition
 
 ---
 
