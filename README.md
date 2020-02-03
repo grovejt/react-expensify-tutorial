@@ -1,4 +1,12 @@
-Reference working app: https://budget-app.mead.io/ <br/> Course: https://cognizant.udemy.com/course/react-2nd-edition <br/> React Router: https://reacttraining.com/react-router/
+Reference working app: https://budget-app.mead.io/ <br/>
+
+Course: https://cognizant.udemy.com/course/react-2nd-edition <br/> React Router: https://reacttraining.com/react-router/
+
+## Jest: https://jestjs.io/
+
+## Enzyme: > yarn add enzyme enzyme-adapter-react-16 react-test-renderer enzyme-to-json
+
+### https://airbnb.io/enzyme/
 
 ---
 
