@@ -20,6 +20,9 @@ run prod build on local server with serve: > npm install -g server <br/>
 https://devcenter.heroku.com/ <br/>
 \> heroku login <br/>
 \> heroku create grovejt-expensify </br>
+\> git push heroku master </br>
+\> heroku open (or the url from the push output above - https://grovejt-expensify.herokuapp.com) </br>
+\> heroku logs
 
 ## \> yarn add express <br/>
 
