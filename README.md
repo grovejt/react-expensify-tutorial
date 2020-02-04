@@ -25,6 +25,10 @@ http://localhost:3011
 \> node server/server.js <br/>
 http://localhost:3012/
 
+# install node
+# install yarn
+# yarn install
+# yarn start
 ---
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
