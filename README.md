@@ -36,6 +36,11 @@ http://localhost:3011
 \> node server/server.js <br/>
 http://localhost:3012/
 
+# Number - format numbers
+
+http://numeraljs.com/
+\> yarn add numeral
+
 # Chalk - Terminal string styling done right
 
 \> yarn add chalk --dev <br/>
