@@ -16,6 +16,6 @@ app.listen(port, () => {
   console.log(`********************************
     Server is up.
       port=${port}
-    prodPath=${prodPath}
-    ********************************`);
+      prodPath=${prodPath}
+********************************`);
 });
