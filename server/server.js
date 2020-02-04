@@ -2,6 +2,10 @@ const express = require("express");
 const path = require("path");
 const app = express();
 
+// get PORT from environment variable is provided (e.g. from Heroku):
+const port = process.env.PORT || 3012;
+console.log("port", port);
+
 const prodPath = path.join(__dirname, "..", "build");
 console.log("prodPath", prodPath);
 

@@ -12,12 +12,20 @@ install node <br/>
 install yarn <br/>
 
 \> yarn install <br/>
-\> yarn start <br/>
-\> npm install -g server <br/>
+run dev build on local server: > yarn dev <br/>
+run prod build on local server with express:> yarn start <br/>
+run prod build on local server with serve: > npm install -g server <br/>
+
+\> brew tap heroku/brew && brew install heroku
+https://devcenter.heroku.com/ <br/>
+\> heroku login <br/>
+\> heroku create grovejt-expensify </br>
 
 ## \> yarn add express <br/>
 
 # To run production build:
+
+\> yarn build
 
 \> serve -s build -l 3011 <br/>
 http://localhost:3011
@@ -25,10 +33,6 @@ http://localhost:3011
 \> node server/server.js <br/>
 http://localhost:3012/
 
-# install node
-# install yarn
-# yarn install
-# yarn start
 ---
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
@@ -37,7 +41,7 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 In the project directory, you can run:
 
-### `yarn start`
+### `yarn dev`
 
 Runs the app in the development mode.<br /> Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
@@ -54,6 +58,12 @@ Builds the app for production to the `build` folder.<br /> It correctly bundles 
 The build is minified and the filenames include the hashes.<br /> Your app is ready to be deployed!
 
 See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+
+### `yarn start`
+
+Runs the app in the production mode using an express node server.<br /> Open [http://localhost:3012](http://localhost:3012) to view it in the browser.
+
+The page will reload if you make edits.<br /> You will also see any lint errors in the console.
 
 ### `yarn eject`
 
