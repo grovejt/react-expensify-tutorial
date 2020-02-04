@@ -2,11 +2,28 @@ Reference working app: https://budget-app.mead.io/ <br/>
 
 Course: https://cognizant.udemy.com/course/react-2nd-edition <br/> React Router: https://reacttraining.com/react-router/
 
-## Jest: https://jestjs.io/
+### Jest: https://jestjs.io/
 
-## Enzyme: > yarn add enzyme enzyme-adapter-react-16 react-test-renderer enzyme-to-json
+### Enzyme: > yarn add enzyme enzyme-adapter-react-16 react-test-renderer enzyme-to-json
 
-### https://airbnb.io/enzyme/
+- https://airbnb.io/enzyme/
+
+install node <br/>
+install yarn <br/>
+
+\> yarn install <br/>
+\> yarn start <br/>
+\> npm install -g server <br/>
+
+## \> yarn add express <br/>
+
+# To run production build:
+
+\> serve -s build -l 3011 <br/>
+http://localhost:3011
+
+\> node server/server.js <br/>
+http://localhost:3012/
 
 ---
 
