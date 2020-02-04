@@ -8,6 +8,10 @@ Course: https://cognizant.udemy.com/course/react-2nd-edition <br/> React Router:
 
 ### https://airbnb.io/enzyme/
 
+# install node
+# install yarn
+# yarn install
+# yarn start
 ---
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
