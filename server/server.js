@@ -4,10 +4,7 @@ const app = express();
 
 // get PORT from environment variable is provided (e.g. from Heroku):
 const port = process.env.PORT || 3012;
-console.log("port", port);
-
 const prodPath = path.join(__dirname, "..", "build");
-console.log("prodPath", prodPath);
 
 app.use(express.static(prodPath));
 
@@ -16,5 +13,7 @@ app.get("*", (req, res) => {
 });
 
 app.listen(port, () => {
-  console.log("Server is up.");
+  console.log(`Server is up.
+    port=${port}
+    prodPath=${prodPath}`);
 });

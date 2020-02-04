@@ -36,6 +36,11 @@ http://localhost:3011
 \> node server/server.js <br/>
 http://localhost:3012/
 
+# Chalk - Terminal string styling done right
+
+\> yarn add chalk --dev <br/>
+https://www.npmjs.com/package/chalk
+
 ---
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).

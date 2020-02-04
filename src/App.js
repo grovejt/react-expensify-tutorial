@@ -3,7 +3,7 @@ import { Provider } from "react-redux";
 import AppRouter from "./routers/AppRouter";
 import configureStore from "./store/configureStore";
 import * as ExpenseAction from "./actions/expenses";
-import getVisibleExpenses from "./selectors/expenses";
+// import getVisibleExpenses from "./selectors/expenses";
 
 const store = configureStore();
 // const state = store.getState();
