@@ -6,7 +6,8 @@
   "scripts": {
     "dev": "react-scripts start",
     "prod": "node server/server.js",
-    "start": "react-scripts start",
+    "_comment": "this (start) is what netlify will use to start the app:",
+    "start": "node server/server.js",
     "start-serve": "serve -s build -l 3011",
     "build": "react-scripts build",
     "test": "react-scripts test",

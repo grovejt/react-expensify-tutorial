@@ -11,12 +11,13 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 - Course: https://cognizant.udemy.com/course/react-2nd-edition
 - React Router: https://reacttraining.com/react-router/
 
-## Changes:
+## Changes/Differences:
 
 - Built using create-react-app instead of custom webpack build
 - Uses hooks for state and only functional components
 - Uses firestore instead of firebase for persistence
 - Uses newer version of redux-mock-store: getActions instead of done
+- Uses build in env variable handling from create-react-app
 
 Reference working app: https://budget-app.mead.io/
 

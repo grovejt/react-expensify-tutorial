@@ -8,6 +8,11 @@ import database from "../../firebase/firebase";
 const middlewares = [thunk];
 const createMockStore = configureStore(middlewares);
 
+beforeEach(() => {
+  // Setup test data:
+  // database.collection('expenses')
+});
+
 test("should setup remove expense action object", () => {
   const action = removeExpense("123abc");
   expect(action).toEqual({
