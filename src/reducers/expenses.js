@@ -1,19 +1,16 @@
+import * as types from "../actions/actionTypes";
 const expensesReducerDefaultState = [];
 
 export default (state = expensesReducerDefaultState, action) => {
   switch (action.type) {
-    case "ADD_EXPENSE":
+    case types.ADD_EXPENSE:
       return [...state, action.expense];
-    case "REMOVE_EXPENSE":
+    case types.REMOVE_EXPENSE:
       // console.log("reducer - remove expense", action.id);
       return state.filter(({ id }) => id !== action.id);
-    case "EDIT_EXPENSE":
+    case types.EDIT_EXPENSE:
       return state.map(expense => {
         if (expense.id === action.id) {
-          // console.log("true", {
-          //   ...expense,
-          //   ...action.updates
-          // });
           return {
             ...expense,
             ...action.updates
@@ -22,6 +19,9 @@ export default (state = expensesReducerDefaultState, action) => {
           return expense;
         }
       });
+    case types.SET_EXPENSES:
+      //console.log("reducer - SET_EXPENSES", action);
+      return action.expenses;
     default:
       return state;
   }

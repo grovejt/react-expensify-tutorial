@@ -13,6 +13,7 @@ export default initialState => {
     }),
     initialState,
     composeEnhancers(applyMiddleware(reduxImmutableStateInvariant(), thunk))
+    //applyMiddleware(thunk)
   );
   return store;
 };

@@ -40,31 +40,12 @@ export const startAddExpense = (expenseData = {}) => {
       .collection("expenses")
       .add(expense)
       .then(function(docRef) {
-        console.log("Document written with ID: ", docRef.id);
+        //console.log("Document written with ID: ", docRef.id);
         dispatch(addExpense({ id: docRef.id, ...expense }));
       })
       .catch(function(error) {
         console.error("Error adding document: ", error);
       });
-
-    //// add new object:
-    // database
-    //   .collection("first-test-collection")
-    //   .add({
-    //     name: "John Grove",
-    //     age: 55,
-    //     isSingle: false,
-    //     location: {
-    //       city: "Odessa",
-    //       county: "United States"
-    //     }
-    //   })
-    //   .then(function(docRef) {
-    //     console.log("Document written with ID: ", docRef.id);
-    //   })
-    //   .catch(function(error) {
-    //     console.error("Error adding document: ", error);
-    //   });
   };
 };
 
@@ -74,6 +55,31 @@ export const editExpense = (id, updates) => ({
   id,
   updates
 });
+
+export const setExpenses = expenses => ({
+  type: types.SET_EXPENSES,
+  expenses
+});
+
+export const startSetExpenses = () => {
+  return dispatch => {
+    return database
+      .collection("expenses")
+      .get()
+      .then(snapshot => {
+        const expensesRead = [];
+        snapshot.forEach(doc => {
+          // console.log(doc.id, "=", doc.data());
+          expensesRead.push({ id: doc.id, ...doc.data() });
+        });
+        //console.log("Document written with ID: ", docRef.id);
+        dispatch(setExpenses(expensesRead));
+      })
+      .catch(function(error) {
+        console.error("Error loading expenses from database: ", error);
+      });
+  };
+};
 
 // REMOVE_EXPENSE
 export const removeExpense = id => ({

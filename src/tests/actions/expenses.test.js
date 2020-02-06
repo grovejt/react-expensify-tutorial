@@ -1,6 +1,13 @@
 import configureStore from "redux-mock-store";
 import thunk from "redux-thunk";
-import { startAddExpense, addExpense, editExpense, removeExpense } from "../../actions/expenses";
+import {
+  startAddExpense,
+  addExpense,
+  setExpenses,
+  startSetExpenses,
+  editExpense,
+  removeExpense
+} from "../../actions/expenses";
 import expenses from "../fixtures/expenses";
 import * as types from "../../actions/actionTypes";
 import database from "../../firebase/firebase";
@@ -8,10 +15,24 @@ import database from "../../firebase/firebase";
 const middlewares = [thunk];
 const createMockStore = configureStore(middlewares);
 
-beforeEach(() => {
-  // Setup test data:
-  // database.collection('expenses')
+beforeEach(done => {
+  deleteCollection(database, "expenses", 100).then(() => {
+    loadInitialData(done);
+  });
 });
+
+const loadInitialData = done => {
+  const batch = database.batch();
+
+  expenses.forEach(({ id, description, note, amount, createdAt }) => {
+    //expensesData[id] = {id, description, note, amount, createdAt};
+    batch.set(database.collection("expenses").doc(id), { description, note, amount, createdAt });
+  });
+
+  batch.commit().then(() => {
+    done();
+  });
+};
 
 test("should setup remove expense action object", () => {
   const action = removeExpense("123abc");
@@ -112,6 +133,13 @@ test("should add expense with defaults to database and store", done => {
     });
 });
 
+test("should setup set expense action object with data", () => {
+  const action = setExpenses(expenses);
+  expect(action).toEqual({
+    type: types.SET_EXPENSES,
+    expenses
+  });
+});
 // test("should setup add expense action object with default values", () => {
 //   const action = addExpense();
 //   expect(action).toEqual({
@@ -125,3 +153,60 @@ test("should add expense with defaults to database and store", done => {
 //     },
 //   });
 // });
+
+test("should fetch the expenses from firestore", done => {
+  const initialState = {};
+  const store = createMockStore(initialState);
+  expect.assertions(1);
+  store.dispatch(startSetExpenses()).then(() => {
+    const actions = store.getActions();
+    expect(actions[0]).toEqual({
+      type: types.SET_EXPENSES,
+      expenses
+    });
+    done();
+  });
+});
+
+const deleteCollection = (db, collectionPath, batchSize) => {
+  let collectionRef = db.collection(collectionPath);
+  let query = collectionRef.orderBy("__name__").limit(batchSize);
+
+  return new Promise((resolve, reject) => {
+    deleteQueryBatch(db, query, batchSize, resolve, reject);
+  });
+};
+
+const deleteQueryBatch = (db, query, batchSize, resolve, reject) => {
+  query
+    .get()
+    .then(snapshot => {
+      // When there are no documents left, we are done
+      if (snapshot.size == 0) {
+        return 0;
+      }
+
+      // Delete documents in a batch
+      let batch = db.batch();
+      snapshot.docs.forEach(doc => {
+        batch.delete(doc.ref);
+      });
+
+      return batch.commit().then(() => {
+        return snapshot.size;
+      });
+    })
+    .then(numDeleted => {
+      if (numDeleted === 0) {
+        resolve();
+        return;
+      }
+
+      // Recurse on the next process tick, to avoid
+      // exploding the stack.
+      process.nextTick(() => {
+        deleteQueryBatch(db, query, batchSize, resolve, reject);
+      });
+    })
+    .catch(reject);
+};
