@@ -2,11 +2,11 @@ import React from "react";
 import ExpenseForm from "./ExpenseForm";
 import { connect } from "react-redux";
 // import PropTypes from "prop-types";
-import { addExpense } from "../actions/expenses";
+import { startAddExpense } from "../actions/expenses";
 
-const AddExpensePage = props => {
+export const AddExpensePage = props => {
   const addExpense = expense => {
-    props.addExpense(expense);
+    props.startAddExpense(expense);
     props.history.push("/");
   };
   return (
@@ -23,6 +23,6 @@ const mapStateToProps = state => {
   };
 };
 
-const mapDispatchToProps = { addExpense };
+const mapDispatchToProps = { startAddExpense };
 
 export default connect(mapStateToProps, mapDispatchToProps)(AddExpensePage);

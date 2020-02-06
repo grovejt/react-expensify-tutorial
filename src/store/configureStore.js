@@ -2,6 +2,7 @@ import { createStore, applyMiddleware, compose, combineReducers } from "redux";
 import expensesReducer from "../reducers/expenses";
 import filtersReducer from "../reducers/filters";
 import reduxImmutableStateInvariant from "redux-immutable-state-invariant";
+import thunk from "redux-thunk";
 
 export default initialState => {
   const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
@@ -11,7 +12,7 @@ export default initialState => {
       filters: filtersReducer
     }),
     initialState,
-    composeEnhancers(applyMiddleware(reduxImmutableStateInvariant()))
+    composeEnhancers(applyMiddleware(reduxImmutableStateInvariant(), thunk))
   );
   return store;
 };

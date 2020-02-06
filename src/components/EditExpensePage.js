@@ -3,10 +3,10 @@ import { connect } from "react-redux";
 import { editExpense, removeExpense } from "../actions/expenses";
 import ExpenseForm from "./ExpenseForm";
 
-const EditExpensePage = props => {
+export const EditExpensePage = props => {
   const updateExpense = updatedExpense => {
-    console.log("submitted", updatedExpense);
-    console.log("submitted", { ...updatedExpense });
+    // console.log("submitted", updatedExpense);
+    // console.log("submitted", { ...updatedExpense });
     props.editExpense(props.expense.id, updatedExpense);
     props.history.push("/");
   };
