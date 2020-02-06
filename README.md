@@ -2,6 +2,8 @@
 
 Re-worked version of the expensify app from "the Complete Reat Developer Course (w/ Hooks and Redux)".
 
+- GitHub: https://github.com/grovejt/react-expensify-tutorial
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Notes
