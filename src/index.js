@@ -30,7 +30,7 @@ ReactDOM.render(<p>Loading...</p>, document.getElementById("root"));
 
 firebase.auth().onAuthStateChanged(user => {
   if (user) {
-    console.log("user is logged in.", user.uid);
+    // console.log("user is logged in.", user.uid);
     store.dispatch(login(user.uid));
     store.dispatch(startSetExpenses()).then(() => {
       renderApp();
@@ -39,7 +39,7 @@ firebase.auth().onAuthStateChanged(user => {
       }
     });
   } else {
-    console.log("user is logged out.");
+    // console.log("user is logged out.");
     store.dispatch(logout());
     renderApp();
     history.push("/");
