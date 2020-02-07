@@ -1,5 +1,6 @@
 // import uuid from "uuid";
-import database from "../firebase/firebase";
+import database, { getRefToUsersExpensesCol, getRefToUsersExpenseDoc } from "../firebase/firebase";
+
 import * as types from "./actionTypes";
 
 // Sync:
@@ -14,30 +15,21 @@ import * as types from "./actionTypes";
 //   component dispatches function (?)
 //   function runs (has the ability to dispatch other actions and do whatever it wants)
 
-// ADD_EXPENSE
-// export const addExpense = ({ description = "", note = "", amount = 0, createdAt = 0 } = {}) => ({
-//   type: "ADD_EXPENSE",
-//   expense: {
-//     id: uuid(),
-//     description,
-//     note,
-//     amount,
-//     createdAt
-//   }
-// });
 export const addExpense = expense => ({
   type: types.ADD_EXPENSE,
   expense
 });
 
 export const startAddExpense = (expenseData = {}) => {
-  return dispatch => {
+  return (dispatch, getState) => {
+    //console.log("uid", getState().auth.uid);
+    const uid = getState().auth.uid;
+
     // set defaults:
     const { description = "", note = "", amount = 0, createdAt = 0 } = expenseData;
     const expense = { description, note, amount, createdAt };
 
-    return database
-      .collection("expenses")
+    return getRefToUsersExpensesCol(database, uid)
       .add(expense)
       .then(function(docRef) {
         //console.log("Document written with ID: ", docRef.id);
@@ -58,11 +50,8 @@ export const editExpense = (id, updates) => ({
 
 export const startEditExpense = (id, updates) => {
   return (dispatch, getState) => {
-    //const uid = getState().auth.uid;
-    //return database.ref(`users/${uid}/expenses/${id}`).update(updates).then(() => {
-    return database
-      .collection("expenses")
-      .doc(id)
+    const uid = getState().auth.uid;
+    return getRefToUsersExpenseDoc(database, uid, id)
       .update(updates)
       .then(() => {
         dispatch(editExpense(id, updates));
@@ -76,17 +65,15 @@ export const setExpenses = expenses => ({
 });
 
 export const startSetExpenses = () => {
-  return dispatch => {
-    return database
-      .collection("expenses")
+  return (dispatch, getState) => {
+    const uid = getState().auth.uid;
+    return getRefToUsersExpensesCol(database, uid)
       .get()
       .then(snapshot => {
         const expensesRead = [];
         snapshot.forEach(doc => {
-          // console.log(doc.id, "=", doc.data());
           expensesRead.push({ id: doc.id, ...doc.data() });
         });
-        //console.log("Document written with ID: ", docRef.id);
         dispatch(setExpenses(expensesRead));
       })
       .catch(function(error) {
@@ -103,11 +90,8 @@ export const removeExpense = id => ({
 
 export const startRemoveExpense = id => {
   return (dispatch, getState) => {
-    //const uid = getState().auth.uid;
-    //return database.ref(`users/${uid}/expenses/${id}`).remove().then(() => {
-    return database
-      .collection("expenses")
-      .doc(id)
+    const uid = getState().auth.uid;
+    return getRefToUsersExpenseDoc(database, uid, id)
       .delete()
       .then(() => {
         dispatch(removeExpense(id));
