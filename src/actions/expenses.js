@@ -1,4 +1,4 @@
-import uuid from "uuid";
+// import uuid from "uuid";
 import database from "../firebase/firebase";
 import * as types from "./actionTypes";
 
@@ -110,7 +110,6 @@ export const startRemoveExpense = id => {
       .doc(id)
       .delete()
       .then(() => {
-        console.log("XXX, id");
         dispatch(removeExpense(id));
       })
       .catch(function(error) {

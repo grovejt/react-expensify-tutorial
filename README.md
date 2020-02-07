@@ -11,6 +11,15 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 - Course: https://cognizant.udemy.com/course/react-2nd-edition
 - React Router: https://reacttraining.com/react-router/
 
+## ToDo
+
+- enable test cases that test state (enzyme doesn't support hooks very well, perhaps switch these to test-react-app?)
+  - see https://kentcdodds.com/blog/why-i-never-use-shallow-rendering
+  - https://blog.sapegin.me/all/react-testing-1-best-practices/
+  - https://blog.sapegin.me/all/react-testing-2-jest-and-enzyme/
+  - https://blog.sapegin.me/all/react-testing-3-jest-and-react-testing-library/
+- ...
+
 ## Changes/Differences:
 
 - Built using create-react-app instead of custom webpack build
@@ -58,6 +67,11 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
   - \> yarn add express <br/>
 
+- History - The history library lets you easily manage session history anywhere JavaScript runs.
+
+  - \> yarn add history
+  - https://www.npmjs.com/package/history
+
 - Thunk
 
   - https://github.com/reduxjs/redux-thunk
@@ -66,10 +80,14 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
   - https://momentjs.com/
 
-* Number - format numbers
+- Number - format numbers
 
   - http://numeraljs.com/
   - \> yarn add numeral
+
+- UUID - generate unique identifiers (no longer used since switching over to firestore database)
+
+  - \> yarn add uuid
 
 * Firebase (for the google firestore database)
 
