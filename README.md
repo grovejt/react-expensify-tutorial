@@ -2,6 +2,8 @@
 
 Re-worked version of the expensify app from "the Complete Reat Developer Course (w/ Hooks and Redux)".
 
+[Context Diagram](docs/ContextDiagram.png)
+
 - GitHub: https://github.com/grovejt/react-expensify-tutorial
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
@@ -60,6 +62,7 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 # Misc Notes:
 
 - Airbnb style guide: https://github.com/airbnb/javascript
+- diagrams done with https://www.draw.io/ and stored in /docs folder.
 
 # Dependency Notes:
 
