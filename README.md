@@ -2,7 +2,7 @@
 
 Re-worked version of the expensify app from "the Complete Reat Developer Course (w/ Hooks and Redux)".
 
-[Context Diagram](docs/ContextDiagram.png)
+![Context Diagram](docs/ContextDiagram.png)
 
 - GitHub: https://github.com/grovejt/react-expensify-tutorial
 
