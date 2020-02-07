@@ -1,13 +1,13 @@
 import React from "react";
 import { connect } from "react-redux";
-import { editExpense, removeExpense } from "../actions/expenses";
+import { startEditExpense, startRemoveExpense } from "../actions/expenses";
 import ExpenseForm from "./ExpenseForm";
 
 export const EditExpensePage = props => {
   const updateExpense = updatedExpense => {
     // console.log("submitted", updatedExpense);
     // console.log("submitted", { ...updatedExpense });
-    props.editExpense(props.expense.id, updatedExpense);
+    props.startEditExpense(props.expense.id, updatedExpense);
     props.history.push("/");
   };
   return (
@@ -17,7 +17,7 @@ export const EditExpensePage = props => {
       <button
         className="btn btn-primary"
         onClick={e => {
-          props.removeExpense(props.expense.id);
+          props.startRemoveExpense(props.expense.id);
           props.history.push("/");
         }}
       >
@@ -33,6 +33,6 @@ const mapStateToProps = (state, props) => {
   };
 };
 
-const mapDispatchToProps = { editExpense, removeExpense };
+const mapDispatchToProps = { startEditExpense, startRemoveExpense };
 
 export default connect(mapStateToProps, mapDispatchToProps)(EditExpensePage);

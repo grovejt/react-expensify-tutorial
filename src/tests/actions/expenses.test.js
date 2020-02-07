@@ -4,8 +4,10 @@ import {
   startAddExpense,
   addExpense,
   setExpenses,
+  startEditExpense,
   startSetExpenses,
   editExpense,
+  startRemoveExpense,
   removeExpense
 } from "../../actions/expenses";
 import expenses from "../fixtures/expenses";
@@ -25,7 +27,6 @@ const loadInitialData = done => {
   const batch = database.batch();
 
   expenses.forEach(({ id, description, note, amount, createdAt }) => {
-    //expensesData[id] = {id, description, note, amount, createdAt};
     batch.set(database.collection("expenses").doc(id), { description, note, amount, createdAt });
   });
 
@@ -42,6 +43,30 @@ test("should setup remove expense action object", () => {
   });
 });
 
+test("should remove expense from firebase", done => {
+  //const store = createMockStore(defaultAuthState);
+  const store = createMockStore({});
+  const id = expenses[2].id;
+  store
+    .dispatch(startRemoveExpense(id))
+    .then(() => {
+      const actions = store.getActions();
+      expect(actions[0]).toEqual({
+        type: types.REMOVE_EXPENSE,
+        id
+      });
+      //return database.ref(`users/${uid}/expenses/${id}`).once("value");
+      return database
+        .collection("expenses")
+        .doc(id)
+        .get();
+    })
+    .then(docSnapshot => {
+      expect(docSnapshot.exists).toBe(false);
+      done();
+    });
+});
+
 test("should setup edit expense action object", () => {
   const action = editExpense("123abc", { note: "New note value" });
   expect(action).toEqual({
@@ -51,6 +76,32 @@ test("should setup edit expense action object", () => {
       note: "New note value"
     }
   });
+});
+
+test("should edit expense from firebase", done => {
+  //const store = createMockStore(defaultAuthState);
+  const store = createMockStore({});
+  const id = expenses[0].id;
+  const updates = { amount: 21045 };
+  store
+    .dispatch(startEditExpense(id, updates))
+    .then(() => {
+      const actions = store.getActions();
+      expect(actions[0]).toEqual({
+        type: "EDIT_EXPENSE",
+        id,
+        updates
+      });
+      //return database.ref(`users/${uid}/expenses/${id}`).once("value");
+      return database
+        .collection("expenses")
+        .doc(id)
+        .get();
+    })
+    .then(doc => {
+      expect(doc.data().amount).toBe(updates.amount);
+      done();
+    });
 });
 
 test("should setup add expense action object with provided values", () => {

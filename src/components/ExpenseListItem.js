@@ -3,10 +3,9 @@ import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 import moment from "moment";
 import numeral from "numeral";
+import { startRemoveExpense } from "../actions/expenses";
 
-import { removeExpense } from "../actions/expenses";
-
-export const ExpenseListItem = ({ id, description, amount, createdAt, removeExpense }) => {
+export const ExpenseListItem = ({ id, description, amount, createdAt, startRemoveExpense }) => {
   return (
     <div>
       <Link to={`/edit/${id}`}>
@@ -20,7 +19,7 @@ export const ExpenseListItem = ({ id, description, amount, createdAt, removeExpe
       <button
         className="btn btn-primary"
         onClick={e => {
-          removeExpense(id);
+          startRemoveExpense(id);
         }}
       >
         Remove
@@ -29,5 +28,5 @@ export const ExpenseListItem = ({ id, description, amount, createdAt, removeExpe
   );
 };
 
-const mapDispatchToProps = { removeExpense };
+const mapDispatchToProps = { startRemoveExpense };
 export default connect(null, mapDispatchToProps)(ExpenseListItem);

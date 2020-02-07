@@ -56,6 +56,20 @@ export const editExpense = (id, updates) => ({
   updates
 });
 
+export const startEditExpense = (id, updates) => {
+  return (dispatch, getState) => {
+    //const uid = getState().auth.uid;
+    //return database.ref(`users/${uid}/expenses/${id}`).update(updates).then(() => {
+    return database
+      .collection("expenses")
+      .doc(id)
+      .update(updates)
+      .then(() => {
+        dispatch(editExpense(id, updates));
+      });
+  };
+};
+
 export const setExpenses = expenses => ({
   type: types.SET_EXPENSES,
   expenses
@@ -86,3 +100,21 @@ export const removeExpense = id => ({
   type: types.REMOVE_EXPENSE,
   id
 });
+
+export const startRemoveExpense = id => {
+  return (dispatch, getState) => {
+    //const uid = getState().auth.uid;
+    //return database.ref(`users/${uid}/expenses/${id}`).remove().then(() => {
+    return database
+      .collection("expenses")
+      .doc(id)
+      .delete()
+      .then(() => {
+        console.log("XXX, id");
+        dispatch(removeExpense(id));
+      })
+      .catch(function(error) {
+        console.error("Error removing expense from database: ", error);
+      });
+  };
+};

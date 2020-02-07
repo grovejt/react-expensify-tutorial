@@ -19,7 +19,10 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 - Uses newer version of redux-mock-store: getActions instead of done
 - Uses build in env variable handling from create-react-app
 
-Reference working app: https://budget-app.mead.io/
+## References
+
+- Reference working app: https://budget-app.mead.io/
+- Reference code: https://github.com/andrewjmead/react-course-2-expensify-app
 
 # Pre-reqs:
 
