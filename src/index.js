@@ -12,7 +12,7 @@ import configureStore from "./store/configureStore";
 import * as serviceWorker from "./serviceWorker";
 import { firebase } from "./firebase/firebase";
 
-//console.log("process.env", process.env);
+// console.log("process.env", process.env);
 // console.log("process.env.NODE_ENV", process.env.NODE_ENV);
 // console.log("process.env.REACT_APP_FIREBASE_PROJECT_ID", process.env.REACT_APP_FIREBASE_PROJECT_ID);
 
