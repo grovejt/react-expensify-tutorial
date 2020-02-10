@@ -75,34 +75,39 @@ const ExpenseForm = props => {
   };
 
   return (
-    <div>
-      {error ? <p>Please enter both a description and an amount!</p> : ""}
+    <form className="form" onSubmit={onSubmit}>
+      {error ? <p className="form__error">Please enter both a description and an amount!</p> : ""}
+      <input
+        className="text-input"
+        type="text"
+        placeholder="Description"
+        autoFocus
+        value={expense.description}
+        onChange={onDescriptionChange}
+      />
+      <input className="text-input" type="text" placeholder="Amount" value={expense.amount} onChange={onAmountChange} />
 
-      <form onSubmit={onSubmit}>
-        <input
-          type="text"
-          placeholder="Description"
-          autoFocus
-          value={expense.description}
-          onChange={onDescriptionChange}
-        />
-        <input type="text" placeholder="Amount" value={expense.amount} onChange={onAmountChange} />
+      <SingleDatePicker
+        id="your_unique_id" // PropTypes.string.isRequired,
+        date={calDate} // momentPropTypes.momentObj or null
+        onDateChange={onDateChange} // PropTypes.func.isRequired
+        focused={calendarFocused} // PropTypes.bool
+        onFocusChange={onCalendarFocusChange} // PropTypes.func.isRequired
+        numberOfMonths={1}
+        isOutsideRange={() => false}
+      />
 
-        <SingleDatePicker
-          id="your_unique_id" // PropTypes.string.isRequired,
-          date={calDate} // momentPropTypes.momentObj or null
-          onDateChange={onDateChange} // PropTypes.func.isRequired
-          focused={calendarFocused} // PropTypes.bool
-          onFocusChange={onCalendarFocusChange} // PropTypes.func.isRequired
-          numberOfMonths={1}
-          isOutsideRange={() => false}
-        />
-
-        <br />
-        <textarea placeholder="Add a note for your expense (optional)" value={expense.note} onChange={onNoteChange} />
-        <button className="btn btn-primary">Add Expense</button>
-      </form>
-    </div>
+      <br />
+      <textarea
+        className="textArea"
+        placeholder="Add a note for your expense (optional)"
+        value={expense.note}
+        onChange={onNoteChange}
+      />
+      <div>
+        <button className="button">Save Expense</button>
+      </div>
+    </form>
   );
 };
 

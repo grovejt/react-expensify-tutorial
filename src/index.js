@@ -2,7 +2,7 @@ import React from "react";
 import ReactDOM from "react-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./index.css";
-import "./styles/style.scss";
+import "./styles/styles.scss";
 import "react-dates/lib/css/_datepicker.css";
 import App from "./App";
 import { history } from "./routers/AppRouter";
@@ -11,6 +11,7 @@ import { login, logout } from "./actions/auth";
 import configureStore from "./store/configureStore";
 import * as serviceWorker from "./serviceWorker";
 import { firebase } from "./firebase/firebase";
+import LoadingPage from "./components/LoadingPage";
 
 // console.log("process.env", process.env);
 // console.log("process.env.NODE_ENV", process.env.NODE_ENV);
@@ -26,7 +27,7 @@ const renderApp = params => {
   }
 };
 
-ReactDOM.render(<p>Loading...</p>, document.getElementById("root"));
+ReactDOM.render(<LoadingPage />, document.getElementById("root"));
 
 firebase.auth().onAuthStateChanged(user => {
   if (user) {

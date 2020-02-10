@@ -12,17 +12,23 @@ export const EditExpensePage = props => {
   };
   return (
     <div>
-      <h1>Edit Expense</h1>
-      <ExpenseForm expense={props.expense} onSubmit={updateExpense} />
-      <button
-        className="btn btn-primary"
-        onClick={e => {
-          props.startRemoveExpense(props.expense.id);
-          props.history.push("/");
-        }}
-      >
-        Remove{" "}
-      </button>
+      <div className="page-header">
+        <div className="content-container">
+          <h1 className="page-header__title">Edit Expense</h1>
+        </div>
+      </div>
+      <div className="content-container">
+        <ExpenseForm expense={props.expense} onSubmit={updateExpense} />
+        <button
+          className="button button--secondary"
+          onClick={e => {
+            props.startRemoveExpense(props.expense.id);
+            props.history.push("/");
+          }}
+        >
+          Remove Expense
+        </button>
+      </div>
     </div>
   );
 };

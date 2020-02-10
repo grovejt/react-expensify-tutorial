@@ -17,8 +17,9 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 - configure to run heroku deployment under a sub-domain of jackgrove.com
 - add JSDoc's
+- add configuration to use an embedded database vs the firestore database
 - add CI/CD pipeline (perhaps move from heroku to firebase?)
-- responsive design to run on mobile, perhaps also redo with react-native.
+- perhaps redo with react-native.
 - add test coverage
 - enable test cases that test state (enzyme doesn't support hooks very well, perhaps switch these to test-react-app?)
   - see https://kentcdodds.com/blog/why-i-never-use-shallow-rendering
