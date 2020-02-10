@@ -12,6 +12,10 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 - Course: https://cognizant.udemy.com/course/react-2nd-edition
 - React Router: https://reacttraining.com/react-router/
+- For cross browser testing I used free tier of LambdaTest
+  - lambdatest.com
+- Babel
+  - https://babeljs.io/repl
 
 ## ToDo
 
@@ -35,6 +39,7 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 - Uses firestore instead of firebase for persistence, collections by username and documents to store expenses.
 - Uses newer version of redux-mock-store: getActions instead of done
 - Uses build in env variable handling from create-react-app
+- Uses reacet-app-polyfill instead of babel polyfill for supporting older browsers.
 
 ## References
 
@@ -93,6 +98,14 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
   - http://numeraljs.com/
   - \> yarn add numeral
+
+- react-app-polyfill
+
+  - \> yarn add react-app-polyfill
+  - add these imports to index.js:
+    - import 'react-app-polyfill/ie9';
+    - import 'react-app-polyfill/ie11';
+    - import 'react-app-polyfill/stable';
 
 - UUID - generate unique identifiers (no longer used since switching over to firestore database)
 
