@@ -1,16 +1,25 @@
 # Description
 
-Re-worked version of the expensify app from "the Complete Reat Developer Course (w/ Hooks and Redux)".
+Re-worked version of the expensify app from Udemy course: "The Complete React Developer Course (w/ Hooks and Redux)".
+
+- Original Course: https://www.udemy.com/course/react-2nd-edition/
+- Original Course Source Code: https://github.com/andrewjmead/react-course-2-indecision-app
+- Updated Source Code (this project): https://github.com/grovejt/react-expensify-tutorial
+
+## Changes/Differences:
+
+- Built using create-react-app instead of custom webpack build.
+  - This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+- Uses hooks for state and only functional components
+- Uses firestore instead of firebase for persistence, collections by username and documents to store expenses.
+- Uses newer version of redux-mock-store: getActions instead of done
+- Uses build in env variable handling from create-react-app
+- Uses reacet-app-polyfill instead of babel polyfill for supporting older browsers.
 
 ![Context Diagram](docs/ContextDiagram.png)
 
-- GitHub: https://github.com/grovejt/react-expensify-tutorial
-
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
-
 ## Notes
 
-- Course: https://cognizant.udemy.com/course/react-2nd-edition
 - React Router: https://reacttraining.com/react-router/
 - For cross browser testing I used free tier of LambdaTest
   - lambdatest.com
@@ -30,16 +39,10 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
   - https://blog.sapegin.me/all/react-testing-1-best-practices/
   - https://blog.sapegin.me/all/react-testing-2-jest-and-enzyme/
   - https://blog.sapegin.me/all/react-testing-3-jest-and-react-testing-library/
+- Add confirmation modal when removing expense.
+- Show number of hidden expenses in /dashboard summary.
+- Add support for another social login system (GitHub, Facebook, Twitter, ...)
 - ...
-
-## Changes/Differences:
-
-- Built using create-react-app instead of custom webpack build
-- Uses hooks for state and only functional components
-- Uses firestore instead of firebase for persistence, collections by username and documents to store expenses.
-- Uses newer version of redux-mock-store: getActions instead of done
-- Uses build in env variable handling from create-react-app
-- Uses reacet-app-polyfill instead of babel polyfill for supporting older browsers.
 
 ## References
 
@@ -86,6 +89,13 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
   - \> yarn add history
   - https://www.npmjs.com/package/history
 
+- Redux
+
+  - \> yarn add redux
+  - \> yarn add react-redux
+
+- Redux Imutable State
+  - \> yarn add redux-immutable-state-invariant
 - Thunk
 
   - https://github.com/reduxjs/redux-thunk
