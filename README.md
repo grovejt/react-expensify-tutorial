@@ -6,6 +6,22 @@ Re-worked version of the expensify app from Udemy course: "The Complete React De
 - Original Course Source Code: https://github.com/andrewjmead/react-course-2-indecision-app
 - Updated Source Code (this project): https://github.com/grovejt/react-expensify-tutorial
 
+- Web Dev Guidelines and Cheat Sheets: https://github.com/andrewjmead/web-dev-cheatsheets
+
+## Setup Notes:
+
+Note: the following variables need to be set in a file named .env.development using your firebase main project setting
+and also in a file named .env.test using your test project settings:
+
+- REACT_APP_FIREBASE_API_KEY=
+- REACT_APP_FIREBASE_AUTH_DOMAIN=
+- REACT_APP_FIREBASE_DATABASE_URL=
+- REACT_APP_FIREBASE_PROJECT_ID=
+- REACT_APP_FIREBASE_STORAGE_BUCKET=
+- REACT_APP_FIREBASE_MESSAGING_SENDER_ID=
+- REACT_APP_FIREBASE_APP_ID=
+- REACT_APP_FIREBASE_MEASUREMENT_ID=
+
 ## Changes/Differences:
 
 - Built using create-react-app instead of custom webpack build.
@@ -18,7 +34,7 @@ Re-worked version of the expensify app from Udemy course: "The Complete React De
 
 ![Context Diagram](docs/ContextDiagram.png)
 
-## Notes
+## Misc Notes
 
 - React Router: https://reacttraining.com/react-router/
 - For cross browser testing I used free tier of LambdaTest
